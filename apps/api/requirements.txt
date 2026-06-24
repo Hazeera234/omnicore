@@ -1,0 +1,22 @@
+fastapi>=0.111.0
+uvicorn[standard]>=0.30.1
+sqlalchemy[asyncio]>=2.0.31
+asyncpg>=0.29.0
+pydantic>=2.7.4
+pydantic-settings>=2.3.4
+firebase-admin>=6.5.0
+google-cloud-storage>=2.16.0
+google-cloud-pubsub>=2.21.1
+python-multipart>=0.0.9
+python-magic>=0.4.27
+python-magic-bin>=0.4.14; sys_platform == 'win32'
+pinecone[grpc]>=5.0.0
+langchain>=0.2.0
+langchain-core>=0.2.0
+langchain-google-genai>=1.0.0
+langchain-text-splitters>=0.2.0
+tiktoken>=0.7.0
+langchain-pinecone>=0.2.0
+alembic>=1.13.1
+slowapi>=0.1.9
+python-dotenv>=1.0.1

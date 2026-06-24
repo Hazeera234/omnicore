@@ -1,0 +1,69 @@
+2026-06-19T07:06:11 | INFO     | worker | [Worker] Firestore emulator → localhost:8080
+2026-06-19T07:06:11 | INFO     | worker | [Worker] GOOGLE_API_KEY loaded
+INFO:     Started server process [27532]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8001 (Press CTRL+C to quit)
+2026-06-19T07:06:14 | INFO     | app.routers.ingest | [Worker] Received job for document 5acb9440-325d-4b88-9f67-adf3b90cddd6 in project e9b4b060-1a9f-4322-93b8-490a4efcbeb2
+2026-06-19T07:06:14 | INFO     | app.services.firestore_service | [FirestoreService] Using emulator at localhost:8080
+2026-06-19T07:06:14 | INFO     | app.services.firestore_service | [FirestoreService] Initializing Firebase app | project=omnimind-499716
+2026-06-19T07:06:14 | INFO     | app.services.firestore_service | [FirestoreService] Firestore client initialized successfully
+2026-06-19T07:06:14 | INFO     | app.routers.ingest | [Pipeline] ▶ START | project=e9b4b060-1a9f-4322-93b8-490a4efcbeb2 | document=5acb9440-325d-4b88-9f67-adf3b90cddd6 | file=ADSA new.pdf
+2026-06-19T07:06:14 | INFO     | app.services.firestore_service | [FirestoreService] Job status updated | project=e9b4b060-1a9f-4322-93b8-490a4efcbeb2 | document=5acb9440-325d-4b88-9f67-adf3b90cddd6 | stage='Extracting content' | progress=10% | status=processing
+2026-06-19T07:06:14 | INFO     | app.routers.ingest | [Pipeline] [1/7] Downloading from GCS | path=projects/e9b4b060-1a9f-4322-93b8-490a4efcbeb2/documents/5acb9440-325d-4b88-9f67-adf3b90cddd6/ADSA new.pdf
+2026-06-19T07:06:15 | ERROR    | app.routers.ingest | [Pipeline] [1/7] GCS download FAILED | path=projects/e9b4b060-1a9f-4322-93b8-490a4efcbeb2/documents/5acb9440-325d-4b88-9f67-adf3b90cddd6/ADSA new.pdf | error=404 GET https://storage.googleapis.com/download/storage/v1/b/omnimind-documents/o/projects%2Fe9b4b060-1a9f-4322-93b8-490a4efcbeb2%2Fdocuments%2F5acb9440-325d-4b88-9f67-adf3b90cddd6%2FADSA%20new.pdf?alt=media: No such object: omnimind-documents/projects/e9b4b060-1a9f-4322-93b8-490a4efcbeb2/documents/5acb9440-325d-4b88-9f67-adf3b90cddd6/ADSA new.pdf: ('Request failed with status code', 404, 'Expected one of', <HTTPStatus.OK: 200>, <HTTPStatus.PARTIAL_CONTENT: 206>)
+2026-06-19T07:06:15 | ERROR    | app.routers.ingest | [Pipeline] ✗ FAILED | project=e9b4b060-1a9f-4322-93b8-490a4efcbeb2 | document=5acb9440-325d-4b88-9f67-adf3b90cddd6 | elapsed=1.403s | error_type=NotFound | error=404 GET https://storage.googleapis.com/download/storage/v1/b/omnimind-documents/o/projects%2Fe9b4b060-1a9f-4322-93b8-490a4efcbeb2%2Fdocuments%2F5acb9440-325d-4b88-9f67-adf3b90cddd6%2FADSA%20new.pdf?alt=media: No such object: omnimind-documents/projects/e9b4b060-1a9f-4322-93b8-490a4efcbeb2/documents/5acb9440-325d-4b88-9f67-adf3b90cddd6/ADSA new.pdf: ('Request failed with status code', 404, 'Expected one of', <HTTPStatus.OK: 200>, <HTTPStatus.PARTIAL_CONTENT: 206>)
+Traceback (most recent call last):
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/cloud/storage/blob.py", line 4696, in _prep_and_do_download
+    self._do_download(
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/cloud/storage/blob.py", line 1094, in _do_download
+    response = download.consume(transport, timeout=timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/cloud/storage/_media/requests/download.py", line 280, in consume
+    return _request_helpers.wait_and_retry(retriable_request, self._retry_strategy)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/cloud/storage/_media/requests/_request_helpers.py", line 107, in wait_and_retry
+    return func()
+           ^^^^^^
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 294, in retry_wrapped_func
+    return retry_target(
+           ^^^^^^^^^^^^^
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 156, in retry_target
+    next_sleep = _retry_error_helper(
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_base.py", line 216, in _retry_error_helper
+    raise final_exc from source_exc
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/api_core/retry/retry_unary.py", line 147, in retry_target
+    result = target()
+             ^^^^^^^^
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/cloud/storage/_media/requests/download.py", line 262, in retriable_request
+    self._process_response(result)
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/cloud/storage/_media/_download.py", line 230, in _process_response
+    _helpers.require_status_code(
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/cloud/storage/_media/_helpers.py", line 100, in require_status_code
+    raise InvalidResponse(
+google.cloud.storage.exceptions.InvalidResponse: ('Request failed with status code', 404, 'Expected one of', <HTTPStatus.OK: 200>, <HTTPStatus.PARTIAL_CONTENT: 206>)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/breezy/projects for int/cognitive_agents/apps/worker/app/routers/ingest.py", line 90, in _process_document
+    raise e
+  File "/home/breezy/projects for int/cognitive_agents/apps/worker/app/routers/ingest.py", line 83, in _process_document
+    file_bytes = await loop.run_in_executor(None, _download)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/breezy/projects for int/cognitive_agents/apps/worker/app/routers/ingest.py", line 78, in _download
+    return client.bucket(env_bucket).blob(gcs_path).download_as_bytes()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/cloud/storage/blob.py", line 1530, in download_as_bytes
+    self._prep_and_do_download(
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/cloud/storage/blob.py", line 4710, in _prep_and_do_download
+    _raise_from_invalid_response(exc)
+  File "/home/breezy/projects for int/cognitive_agents/.venv/lib/python3.12/site-packages/google/cloud/storage/blob.py", line 5218, in _raise_from_invalid_response
+    raise exceptions.from_http_status(response.status_code, message, response=response)
+google.api_core.exceptions.NotFound: 404 GET https://storage.googleapis.com/download/storage/v1/b/omnimind-documents/o/projects%2Fe9b4b060-1a9f-4322-93b8-490a4efcbeb2%2Fdocuments%2F5acb9440-325d-4b88-9f67-adf3b90cddd6%2FADSA%20new.pdf?alt=media: No such object: omnimind-documents/projects/e9b4b060-1a9f-4322-93b8-490a4efcbeb2/documents/5acb9440-325d-4b88-9f67-adf3b90cddd6/ADSA new.pdf: ('Request failed with status code', 404, 'Expected one of', <HTTPStatus.OK: 200>, <HTTPStatus.PARTIAL_CONTENT: 206>)
+2026-06-19T07:06:15 | INFO     | app.services.firestore_service | [FirestoreService] Job status updated | project=e9b4b060-1a9f-4322-93b8-490a4efcbeb2 | document=5acb9440-325d-4b88-9f67-adf3b90cddd6 | stage='Failed' | progress=0% | status=failed
+INFO:     127.0.0.1:41096 - "POST /ingest/ HTTP/1.1" 200 OK
