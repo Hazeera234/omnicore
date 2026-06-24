@@ -86,7 +86,9 @@ async def _process_document(project_id: str, document_id: str, gcs_path: str):
         def _download():
             import os
 
-            client = gcs.Client()
+            # Get project from env to allow ADC user credentials to work
+            project = os.environ.get("GOOGLE_CLOUD_PROJECT", os.environ.get("FIREBASE_PROJECT_ID"))
+            client = gcs.Client(project=project)
             env_bucket = os.environ.get("GCS_BUCKET_NAME", "omnimind-documents")
             return client.bucket(env_bucket).blob(gcs_path).download_as_bytes()
 

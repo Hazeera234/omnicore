@@ -108,7 +108,7 @@ export const ProjectSwitcher: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full right-0 mt-1 w-64 bg-popover text-popover-foreground border rounded-md shadow-lg overflow-hidden z-50">
+        <div className="absolute bottom-full right-0 mb-1 w-52 bg-popover text-popover-foreground border rounded-md shadow-lg overflow-hidden z-50">
           <div className="px-3 py-2 text-xs text-muted-foreground bg-muted/50 border-b">Select Project</div>
           <ul className="py-1 max-h-60 overflow-auto">
             {projects.map(p => (

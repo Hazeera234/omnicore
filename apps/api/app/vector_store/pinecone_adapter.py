@@ -1,5 +1,10 @@
 import logging
 import asyncio
+import os
+
+# Fix gRPC DNS resolution on Windows — use native OS resolver instead of c-ares
+os.environ.setdefault("GRPC_DNS_RESOLVER", "native")
+
 try:
     from pinecone.grpc import PineconeGRPC as Pinecone
 except ImportError:

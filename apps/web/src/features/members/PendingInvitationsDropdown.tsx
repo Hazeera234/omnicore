@@ -44,11 +44,11 @@ export const PendingInvitationsDropdown: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
+            exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 mt-2 w-80 bg-popover text-popover-foreground border rounded-xl shadow-xl z-50 overflow-hidden"
+            className="absolute left-0 bottom-full mb-2 w-80 bg-popover text-popover-foreground border rounded-xl shadow-xl z-50 overflow-hidden"
           >
             <div className="px-4 py-3 border-b bg-muted/30 flex justify-between items-center">
               <h3 className="font-semibold text-sm">Pending Invitations</h3>

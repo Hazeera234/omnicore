@@ -124,13 +124,10 @@ class DocumentService:
 
         # 2. Delete the Firestore job record so Intelligence tab updates
         try:
-            import firebase_admin
+            from app.core.firebase import init_firebase
             from firebase_admin import firestore as fb_firestore
-            import os
 
-            if not firebase_admin._apps:
-                project = os.environ.get("FIREBASE_PROJECT_ID", "omnimind-499716")
-                firebase_admin.initialize_app(options={"projectId": project})
+            init_firebase()
 
             fs_client = fb_firestore.client()
             job_ref = (
